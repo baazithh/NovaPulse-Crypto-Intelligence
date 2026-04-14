@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { createChart, ColorType, IChartApi, ISeriesApi, Time, AreaSeries } from "lightweight-charts";
+import { createChart, ColorType, IChartApi, ISeriesApi, Time } from "lightweight-charts";
 import { useSocket } from "@/context/SocketContext";
 
 export const CryptoChart = ({ assetId }: { assetId: string }) => {
@@ -36,7 +36,7 @@ export const CryptoChart = ({ assetId }: { assetId: string }) => {
       }
     });
 
-    const areaSeries = chart.addSeries(AreaSeries, {
+    const areaSeries = chart.addAreaSeries({
       lineColor: '#635BFF',
       topColor: 'rgba(99, 91, 255, 0.4)',
       bottomColor: 'rgba(99, 91, 255, 0.0)',
