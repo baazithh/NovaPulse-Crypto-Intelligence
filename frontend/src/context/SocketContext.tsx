@@ -44,7 +44,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   const [predictions, setPredictions] = useState<MLPrediction[]>([]);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:8000");
+    const newSocket = io("http://localhost:8000", { path: "/ws/socket.io" });
     setSocket(newSocket);
 
     newSocket.on("price_update", (data: CryptoData[]) => {
