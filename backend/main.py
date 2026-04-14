@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 sio = socketio.AsyncServer(async_mode='asgi', cors_allowed_origins='*')
-app.mount('/ws', socketio.ASGIApp(sio))
+asgi_app = socketio.ASGIApp(sio, app)
 
 # Assets to simulate
 ASSETS = [
@@ -115,4 +115,4 @@ def disconnect(sid):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(asgi_app, host="0.0.0.0", port=8000)
